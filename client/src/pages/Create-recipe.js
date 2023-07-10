@@ -14,16 +14,17 @@ export const CreateRecipe = () => {
   });
 
   const navigate = useNavigate();
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setRecipe({ ...recipe, [name]: value });
+  };
+
   const handleIngredientChange = (event, index) => {
     const { value } = event.target;
     const ingredients = recipe.ingredients;
     ingredients[index] = value;
     setRecipe({ ...recipe, ingredients });
-  };
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setRecipe({ ...recipe, [name]: value });
   };
 
   const addIngredient = () => {

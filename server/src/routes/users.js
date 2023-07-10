@@ -1,9 +1,8 @@
 import express from "express";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-import { UserModel } from "../models/Users.js";
-
 const router = express.Router();
+import { UserModel } from "../models/Users.js";
 
 router.post("/register", async (req, res) => {
   const { username, password } = req.body;
@@ -36,7 +35,7 @@ router.post("/login", async (req, res) => {
     return res.json({ message: "Username or Password is Incorrect!" });
   }
   const token = jwt.sign({ id: user._id }, "secret");
-  res.json({ token, userId: user._id });
+  res.json({ token, userID: user._id });
 });
 
 export { router as userRouter };
